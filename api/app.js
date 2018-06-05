@@ -1,6 +1,6 @@
 // Constante globale
 console.log('Répertoire de base:' + __dirname);
-global.__dirname = __dirname;
+global.__basedir = __dirname;
 
 // Gestion des imports
 let createError = require('http-errors');
@@ -10,7 +10,9 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let mongoose = require('mongoose');
 
+// import des routeurs
 
+const productRouter = require('./routes/product-routeur');
 // Création de l'application
 let app = express();
 
@@ -27,7 +29,11 @@ mongoose.connect('mongodb://localhost/fulljs');
 let database = mongoose.connection;
 database.on('error',(err)=> console.log('[mongoose]: connection a MongoDB: échouée'));
 database.once('open',()=> console.log('[mongoose]: connection a MongoDB: réussie'));
-// catch 404 and forward to error handler
+
+//Routage
+app.use('/api/products', productRouter);
+
+// Gestion des erreurs 404:
 app.use(function(req, res, next) {
   next(createError(404));
 });
@@ -40,7 +46,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json(err);
 });
 
 module.exports = app;
