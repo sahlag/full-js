@@ -9,6 +9,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let mongoose = require('mongoose');
+let cors = require('cors');
 
 // import des routeurs
 
@@ -16,7 +17,11 @@ const productRouter = require('./routes/product-routeur');
 // Création de l'application
 let app = express();
 
-
+// Paramétrer les connexion enfantes
+const corsOptions = {
+  origin : 'http://localhost:4200'
+};
+app.use(cors(corsOptions));
 // Middlewares de base
 app.use(logger('dev'));
 app.use(express.json());
