@@ -1,5 +1,6 @@
 
 const Product = require(__basedir + '/model/products.js').Product;
+const mongoose= require('mongoose');
 /**
  *  Récupère la liste des produits
  */
@@ -46,8 +47,9 @@ module.exports.add = (req,res, next) =>{
 module.exports.show = (req, res, next) =>{
     // Récupétaion de l'id
    const id = req.params.id;
+if(mongoose.Types.ObjectId.isValid(id)){
     // Récupération de produit
-    Product.find(
+    Product.findOne(
       { '_id' : id}, 
       (err, product) => {
         if(err) { next(err);}
@@ -56,5 +58,7 @@ module.exports.show = (req, res, next) =>{
         } 
     } 
     );
-
+}else{
+    res.json(null);
+}
 }

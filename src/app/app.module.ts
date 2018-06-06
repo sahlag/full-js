@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductAddComponent } from './products/product-add/product-add.component';
 import { ProductViewShowComponent } from './products/product-view-show/product-view-show.component';
+import { Errors404Component } from './errors/errors404/errors404.component';
+import { HomeComponent } from './home/home/home.component';
 
 
 
@@ -19,7 +21,9 @@ import { ProductViewShowComponent } from './products/product-view-show/product-v
     AppComponent,
     ProductListComponent,
     ProductAddComponent,
-    ProductViewShowComponent
+    ProductViewShowComponent,
+    Errors404Component,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
