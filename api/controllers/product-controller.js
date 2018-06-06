@@ -20,21 +20,41 @@ module.exports.list =(req, res, next) => {
  * Ajout un produit en BDD
  */
 module.exports.add = (req,res, next) =>{
+
+    console.log(req.body);
+
+    const productRecieved = req.body;
+    // console.log(productRecieved);
+    // res.json(productRecieved);
+  
     // ajout d'un produit à la base de donnée
     Product.create(
-        {
-            name: 'transat',
-            introduction: 'pour des vacances au bord de la mer',
-            price: 35.99,
-            createdAt: new Date(),
-            publisher: 'youssef'
+        productRecieved,
 
-        },
-        (err, product)=>{
+        (err, product) => {
             if(err) { next(err);}
-            else{
+            else {
                 res.json(product);
             }
         }
     );
 };
+
+/**
+ * Récupuration d'un produit par rapport à son id
+ */
+module.exports.show = (req, res, next) =>{
+    // Récupétaion de l'id
+   const id = req.params.id;
+    // Récupération de produit
+    Product.find(
+      { '_id' : id}, 
+      (err, product) => {
+        if(err) { next(err);}
+        else {
+            res.json(product);
+        } 
+    } 
+    );
+
+}

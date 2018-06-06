@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductAddComponent } from './products/product-add/product-add.component';
+import { ProductViewShowComponent } from './products/product-view-show/product-view-show.component';
 
 
 
@@ -17,7 +18,8 @@ import { ProductAddComponent } from './products/product-add/product-add.componen
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductViewShowComponent
   ],
   imports: [
     BrowserModule,

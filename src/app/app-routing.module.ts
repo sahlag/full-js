@@ -5,11 +5,13 @@ import { RouterModule, Routes} from '@angular/router';
 // component perso
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductAddComponent } from './products/product-add/product-add.component';
+import { ProductViewShowComponent } from './products/product-view-show/product-view-show.component';
 
 
 const routes: Routes = [
   {path: 'produits', component: ProductListComponent},
-  {path: 'produits/ajout', component: ProductAddComponent}
+  {path: 'produits/ajout', component: ProductAddComponent},
+  {path: 'produits/detail/:id', component: ProductViewShowComponent}
 ];
 
 @NgModule({

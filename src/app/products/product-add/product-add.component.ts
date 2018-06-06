@@ -23,6 +23,14 @@ private product: Product;
 
     private saveProduct(): void {
       console.log('Formulaire soumis');
+      // Ajout de la date de création
+      this.product.createdAt = new Date();
+      this.productService.addProduct(this.product).subscribe(
+        (productAPI) => {
+          console.log('Réception du nouveau produit');
+          console.log(productAPI);
+        }
+      );
     }
 
   ngOnInit() {
