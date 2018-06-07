@@ -46,8 +46,25 @@ export class ProductService {
 
  public showProduct(id: String): Observable<Product> {
   return this.http.get<Product>(this.apiURL + '/' + id).pipe(
-    tap(() => console.log(`Réception de produit portant l'id ${id}`))
+    tap((product) => console.log(`Réception de produit portant l'id ${id}`))
     );
  }
+/**
+ * Modification d(un produit via l'API REST de node)
+ * @param product Produit à modifier en BDD
+ */
+ public update(product: Product): Observable<{result: Boolean}> {
+   return this.http.put<{result: Boolean}>(this.apiURL, product, this.httpOptions).pipe(
+     tap((data) => console.log('Retour de modification:  ' + data.result))
+   );
+ }
 
+ /**
+  * Suppresstion d'ub produit via l'API REST de node
+  */
+ public delete(id: String): Observable<{result: Boolean}> {
+  return this.http.delete<{result: Boolean}>(this.apiURL + '/' + id).pipe(
+    tap((data) => console.log(`Retour de suppression:` + data.result))
+    );
+ }
 }

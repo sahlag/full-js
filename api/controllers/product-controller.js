@@ -68,12 +68,13 @@ if(ObjectId.isValid(id)){
  * Modification d'un produit
  */
 module.exports.update = (req, res, next) => { 
+    const productToUpdate = req.body;
     // si l'id du produit envoyeé est valide: om modifie
     if(productToUpdate._id && ObjectId.isValid(productToUpdate._id)){
     // Modification de produit
-    const productToUpdate = req.body;
+    
         Product.update(
-        // Les condition que doivent les enregitrements pour etre modifier
+        // Les condition que doivent les enregistrements pour etre modifier
            { '_id': productToUpdate._id },
         // les modification a effectuer
             productToUpdate,
@@ -90,3 +91,27 @@ module.exports.update = (req, res, next) => {
     res.json({ result : false });
     }
 };
+
+/**
+ * Supression d'un produit
+ */
+
+ module.exports.delete = (req, res, next) => {
+     // récupération de l'id
+     const idToDelete= req.params.id;
+     // suppression de produit
+     if (ObjectId.isValid(idToDelete)){
+     Product.deleteOne({'_id' : idToDelete},
+     (err) => {
+        if(err) {next(err); }
+                else {
+          res.json({ result : true});
+                } 
+
+     } 
+
+     );
+     } else {
+        res.json({ result : false });
+     }
+    };

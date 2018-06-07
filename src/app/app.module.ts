@@ -14,6 +14,7 @@ import { ProductViewShowComponent } from './products/product-view-show/product-v
 import { Errors404Component } from './errors/errors404/errors404.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProductShowComponent } from './products/product-show/product-show.component';
+import { ProductUpdateComponent } from './products/product-update/product-update.component';
 
 
 
@@ -25,7 +26,8 @@ import { ProductShowComponent } from './products/product-show/product-show.compo
     ProductViewShowComponent,
     Errors404Component,
     HomeComponent,
-    ProductShowComponent
+    ProductShowComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,

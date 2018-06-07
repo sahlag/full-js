@@ -1,8 +1,10 @@
-<main class="container">
+<main class="container ">
 <h1>
-  Ajout d'un produit
+  {{ title }}
 </h1>
-<form #productForm="ngForm" (ngSubmit)="saveProduct()">
+<br>
+<br>
+<form #productForm="ngForm" (ngSubmit)="saveProduct()" class="shadow-lg  p-3 mb-5 bg-white rounded">
   <div class="form-group">
     <label for="name">Nom</label>
     <input required max="100" [(ngModel)]="product.name" type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Nom du produit">
@@ -27,7 +29,7 @@
     <input [(ngModel)]="product.publisher" type="text" class="form-control" id="publisher" name="publisher" placeholder="Nom du Publicateur">
   </div><br>
 
-  <input [disabled]="!productForm.form.valid" type="submit" class="btn btn-primary" value="Créer">
+  <input [disabled]="!productForm.form.valid" type="submit" class="btn btn-primary" [value]="submitValue">
 </form><br>
 <div>
 <pre>{{ product | json }}</pre>

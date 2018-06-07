@@ -1,3 +1,6 @@
+<br>
+<br>
+<br>
 <main *ngIf="product" class="container">
   <h1>{{ product.name }}</h1>
   
@@ -5,4 +8,14 @@
   <p class="text-muted">Publier par
     {{ product.publisher }}
   </p>
+  <a [routerLink]="['/produits/modification', product._id]" class=" btn btn-outline-success" >Modifier</a>
+  <button class="btn btn-outline-danger" (click)="remove()">Supprimer</button>
 </main>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

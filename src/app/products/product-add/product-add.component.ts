@@ -13,8 +13,18 @@ export class ProductAddComponent implements OnInit {
 
 private product: Product;
 
+// les variable d'affichage
+
+private title: String;
+private submitValue: String;
+
   constructor(private productService: ProductService) {
     this.product = new Product();
+
+    // initialisation des valeur
+
+    this.title = `Ajout d'un produit`;
+    this.submitValue = `Créer`;
    }
 
    /**

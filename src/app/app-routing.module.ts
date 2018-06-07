@@ -8,6 +8,7 @@ import { ProductAddComponent } from './products/product-add/product-add.componen
 import { ProductViewShowComponent } from './products/product-view-show/product-view-show.component';
 import { Errors404Component } from './errors/errors404/errors404.component';
 import { HomeComponent } from './home/home/home.component';
+import { ProductUpdateComponent } from './products/product-update/product-update.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'produits/ajout', component: ProductAddComponent},
   {path: 'produits/detail/:id', component: ProductViewShowComponent},
   {path: 'error-404', component: Errors404Component},
+  {path: 'produits/modification/:id', component: ProductUpdateComponent},
   {path: '**', component: Errors404Component}
 ];
 

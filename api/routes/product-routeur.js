@@ -17,8 +17,12 @@ const productController = require(__basedir + '/controllers/product-controller')
 .post( productController.add)
 // Modification du produit
 .put( productController.update)
+
 ;
-
-router.get('/:id', productController.show);
-
+// détail dun produit
+router.route('/:id') 
+.get(productController.show)
+// suppression d'un produit
+.delete( productController.delete)
+;
  module.exports = router;
