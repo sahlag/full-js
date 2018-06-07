@@ -13,6 +13,7 @@ import { ProductAddComponent } from './products/product-add/product-add.componen
 import { ProductViewShowComponent } from './products/product-view-show/product-view-show.component';
 import { Errors404Component } from './errors/errors404/errors404.component';
 import { HomeComponent } from './home/home/home.component';
+import { ProductShowComponent } from './products/product-show/product-show.component';
 
 
 
@@ -23,7 +24,8 @@ import { HomeComponent } from './home/home/home.component';
     ProductAddComponent,
     ProductViewShowComponent,
     Errors404Component,
-    HomeComponent
+    HomeComponent,
+    ProductShowComponent
   ],
   imports: [
     BrowserModule,

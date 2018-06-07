@@ -2,11 +2,27 @@
 <h1>liste des produits</h1>
 
 <ul class="list-group">
-    <li *ngFor="let product of products" class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary ">
-        {{product.name}}
+    <li (click)="productSelected=productLoop;" *ngFor="let productLoop of products" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-primary ">
+        {{productLoop.name}}
       <span class="badge badge-primary badge-pill"></span>
     </li>
     
 </ul>
+<br>
+<br>
+<br>
+<!-- on imbrique le component productShow-->
+<!-- a gauche: proprieté de l'enfant à droite proprieté du parent-->
+<div class="card" >
+    <h5 class="card-header bg-info">Details de produit</h5>
+    <div class="card-body">
+        <app-product-show [product]= "productSelected"></app-product-show>
+    </div>
+  </div>
+
+
+
+
+
 
 </main>

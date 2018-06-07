@@ -1,6 +1,7 @@
 
 const Product = require(__basedir + '/model/products.js').Product;
 const mongoose= require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 /**
  *  Récupère la liste des produits
  */
@@ -47,7 +48,7 @@ module.exports.add = (req,res, next) =>{
 module.exports.show = (req, res, next) =>{
     // Récupétaion de l'id
    const id = req.params.id;
-if(mongoose.Types.ObjectId.isValid(id)){
+if(ObjectId.isValid(id)){
     // Récupération de produit
     Product.findOne(
       { '_id' : id}, 
@@ -61,4 +62,31 @@ if(mongoose.Types.ObjectId.isValid(id)){
 }else{
     res.json(null);
 }
-}
+};
+
+/**
+ * Modification d'un produit
+ */
+module.exports.update = (req, res, next) => { 
+    // si l'id du produit envoyeé est valide: om modifie
+    if(productToUpdate._id && ObjectId.isValid(productToUpdate._id)){
+    // Modification de produit
+    const productToUpdate = req.body;
+        Product.update(
+        // Les condition que doivent les enregitrements pour etre modifier
+           { '_id': productToUpdate._id },
+        // les modification a effectuer
+            productToUpdate,
+        // fonction de rappel (callback) à éxecuter lorsque les modification...
+        // ... ont été faites
+            (err, nblines) => {
+             if(err) {next(err); }
+                else {
+          res.json({ result : true});
+                }
+            }
+        );
+    } else {
+    res.json({ result : false });
+    }
+};

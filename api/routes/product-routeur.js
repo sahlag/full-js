@@ -15,6 +15,8 @@ const productController = require(__basedir + '/controllers/product-controller')
 
  // Ajout d'in produit
 .post( productController.add)
+// Modification du produit
+.put( productController.update)
 ;
 
 router.get('/:id', productController.show);
