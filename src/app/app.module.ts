@@ -9,6 +9,7 @@ import { ProductModule } from './products/product.module';
 import { AppComponent } from './app.component';
 import { Errors404Component } from './errors/errors404/errors404.component';
 import { HomeComponent } from './home/home/home.component';
+import { UserModule } from './users/user.module';
 
 
 
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home/home.component';
   imports: [
     BrowserModule,
     ProductModule,
-    AppRoutingModule// cemodule de routage doit etre charger en dernier, apres les autres modules
+    UserModule,
+    AppRoutingModule, // cemodule de routage doit etre charger en dernier, apres les autres modules
   ],
   providers: [],
   bootstrap: [AppComponent]
