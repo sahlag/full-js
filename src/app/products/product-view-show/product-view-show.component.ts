@@ -12,9 +12,9 @@ export class ProductViewShowComponent implements OnInit, DoCheck {
   private product: Product;
 
   constructor(
-   private productService: ProductService,
-   private route: ActivatedRoute,
-   private router: Router
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
   ngOnInit() {
 this.findProduct();
@@ -46,15 +46,5 @@ this.productService.showProduct(id).subscribe(
 }
 );
 }
-  private remove(): void {
-    this.productService.delete(this.product._id).subscribe(
-      (data) => {
-        if (data.result) {
-          this.router.navigate(['/produits']);
-        } else {
-          console.log(`l'id envoyée est incorrecte`);
-        }
-      }
-    );
-  }
+
 }
