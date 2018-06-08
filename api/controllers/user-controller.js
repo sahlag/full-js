@@ -34,5 +34,32 @@ module.exports.register = (req, res, next) => {
     } else {
         res.json({result: false});
     }
-    //ajout de l'utilisateur en BDD
+
+};
+
+module.exports.login = (req, res, next) => {
+    // récupération des donnéé
+    const datas = req.body;
+  if (datas.username) {
+    User.find(
+        {
+            'username': datas.username
+        },
+        (err, user) => {
+            if(err) {next(err);}
+            else {
+                // vérification du mdp
+                bcrypt.compare(datas.plainPassword, user.password, (err, res) => {
+                 if(err) { res.json({result: false});}
+                 else {
+                     if(res){res.json({result: true}); }
+                     else { res.json({result: false});}
+                 }
+                });
+            }
+        }
+    )
+} else {
+    res.json({result: false});
+}
 }
